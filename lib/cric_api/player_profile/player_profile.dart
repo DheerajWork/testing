@@ -10,6 +10,7 @@ class PlayerProfile extends StatefulWidget {
 }
 
 class _PlayerProfileState extends State<PlayerProfile> {
+
   PlayerProfileModelClass l = PlayerProfileModelClass();
 
   getData() async {
@@ -31,9 +32,27 @@ class _PlayerProfileState extends State<PlayerProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
-      appBar: AppBar(),
-      body: Center(),
+
+      body: l.data==null?Center(child: CircularProgressIndicator(),):SafeArea(
+        child: Column(
+          children: [
+            Text("${l.pid}"),
+            Text("${l.profile}"),
+            Image.network("${l.imageURL}"),
+            Text("${l.battingStyle}"),
+            Text("${l.bowlingStyle}"),
+            Text("${l.majorTeams}"),
+            Text("${l.currentAge}"),
+            Text("${l.born}"),
+            Text("${l.fullName}"),
+            Text("${l.name}"),
+            Text("${l.country}"),
+            Text("${l.playingRole}"),
+            Text("${l.v}"),
+            Text("${l.data!.bowling!.listA!.s10}"),
+          ],
+        ),
+      )
     );
   }
 }
